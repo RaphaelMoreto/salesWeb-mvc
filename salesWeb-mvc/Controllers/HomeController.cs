@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using salesWeb_mvc.Models;
+using salesWeb_mvc.Models.ViewModels;
 using System.Diagnostics;
 
 namespace salesWeb_mvc.Controllers
@@ -19,6 +19,11 @@ namespace salesWeb_mvc.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Department() 
         {
             return View();
         }
