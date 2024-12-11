@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using salesWeb_mvc.Data;
+
 namespace salesWeb_mvc
 {
     public class Program
@@ -5,6 +8,11 @@ namespace salesWeb_mvc
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                new MariaDbServerVersion(new Version(10, 4, 27)) // MariaDB: Versão específica do seu servidor
+            ));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
